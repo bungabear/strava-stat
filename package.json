@@ -1,0 +1,27 @@
+{
+  "name": "strava-stat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "node src/test.js" ,
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bungabear/my-strava-stat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bungabear/my-strava-stat/issues"
+  },
+  "homepage": "https://github.com/bungabear/my-strava-stat#readme",
+  "dependencies": {
+    "strava-v3": "^2.2.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

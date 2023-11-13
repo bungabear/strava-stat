@@ -51,13 +51,12 @@ function createInfoSvg({id, data}) {
     let totalRideDistanceM = totalRide.distance;
     let totalRideDistanceKM = Math.floor(totalRideDistanceM / 1000);
     let totalRideTimeS = totalRide.moving_time;
-    let totalRideTimeH = Math.floor(totalRide.moving_time / 60 / 60);
+    let totalRideTimeH = Math.floor(totalRideTimeS / 60 / 60);
     let yearRide = data.ytd_ride_totals;
     let thisYearRideDistanceM = yearRide.distance;
     let thisYearRideDistanceKM = Math.floor(thisYearRideDistanceM / 1000);
     let thisYearRideTimeS = yearRide.moving_time;
     let thisYearRideTimeH = Math.floor(thisYearRideTimeS / 60 / 60);
-    //let stravaLogo = StravaLogo;
     let stravaLogo = readStravaLogo();
     let svgText = `
     <svg
@@ -68,8 +67,8 @@ function createInfoSvg({id, data}) {
     >
         <style>
             foreignObject {
-            opacity: 0;
-            animation: 1s opacity forwards ease-in-out;
+                opacity: 0;
+                animation: 1s opacity forwards ease-in-out;
             }
             @keyframes opacity {
                 from {
@@ -79,31 +78,40 @@ function createInfoSvg({id, data}) {
                     opacity: 1
                 }
             }
+            @media (prefers-color-scheme: dark) {
+                foreignObject span {
+                    color: white
+                } 
+            }
+            .title {
+                font-size: 16px;
+            }
+            
+            .sub-title {
+                font-size: 12px;
+            }
+            
+            .value {
+                font-size: 10px;
+            }
         </style>
         <foreignObject style="width: 100%; height: 100%;">
             <html xmlns="http://www.w3.org/1999/xhtml">
             <a href="https://www.strava.com/athletes/${id}" style="text-decoration: none; color: unset;" target="_blank">
                 <div style="width: 100%; height: 100%; display: flex; flex-direction:column; justify-content: center; align-items:start;">
-                
-                    <span
-                        style="font-size:16px;"
-                    >
+                    <span class="title">
                         My Bike Riding
                     </span>
                     <div style="height: 10px"/>
-                    <span
-                        style="font-size:12px;"
-                    >
+                    <span class="sub-title">
                         Total
                     </span>
-                    <span style=\"font-size: 10px;\">${totalRideDistanceKM.toLocaleString()} km / ${totalRideTimeH.toLocaleString()} Hours</span>
+                    <span class="value">${totalRideDistanceKM.toLocaleString()} km / ${totalRideTimeH.toLocaleString()} Hours</span>
                     <div style="height: 10px"/>
-                    <span
-                        style="font-size:12px;"
-                    >
+                    <span class="sub-title">
                         This year
                     </span>
-                    <span style=\"font-size: 10px;\">${thisYearRideDistanceKM.toLocaleString()} km / ${thisYearRideTimeH.toLocaleString()} Hours</span>                    
+                    <span class="value">${thisYearRideDistanceKM.toLocaleString()} km / ${thisYearRideTimeH.toLocaleString()} Hours</span>                    
                 </div>
                 <div style="height: 10px"/>
                 <div style="width: 100%; display: flex; flex-direction:column; align-items:end;">

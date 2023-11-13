@@ -20,9 +20,9 @@ jobs:
       
       - run: npm run download
         env:
-          - STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
-          - STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
-          - STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+          STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
 
       - name: Create Release
         uses: ncipollo/release-action@v1.12.0

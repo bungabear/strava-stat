@@ -1,11 +1,11 @@
-name: create image
+name: Publish Stats Image
 
 permissions:
   contents: write
 
 on:
   schedule: 
-    - cron: '0 9,21 * * *'
+    - cron: '*/5 * * * *'
   push:
     branches:
     - main
@@ -27,16 +27,6 @@ jobs:
           STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
           STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
           STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
-
-      - name: Create Release
-        uses: ncipollo/release-action@v1.12.0
-        with:
-          artifacts: "my-stats.svg"
-          artifactContentType: image/svg+xml
-          makeLatest: true
-          allowUpdates: true
-          tag: my-stats
-          name: Release my-stats
 
       - name: Deploy as Pages
         uses: peaceiris/actions-gh-pages@v3

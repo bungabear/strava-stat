@@ -1,4 +1,8 @@
-name: docker dev release
+name: create image
+
+permissions:
+  contents: write
+
 on:
   schedule: 
     - cron: '0 9,21 * * *'
@@ -8,7 +12,7 @@ on:
 
 jobs:
   build:
-    name: put to release
+    name: put stats image to release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

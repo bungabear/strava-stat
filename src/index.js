@@ -63,7 +63,7 @@ function createInfoSvg({id, data}) {
     <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
-        viewBox="0 0 150 500" preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 150 150" preserveAspectRatio="xMidYMid meet"
         style="width: 100%; height: 100%;"
     >
         <style>
@@ -80,7 +80,7 @@ function createInfoSvg({id, data}) {
                 }
             }
         </style>
-        <foreignObject style="width: 100%; overflow:visible;">
+        <foreignObject style="width: 100%; height: 100%;">
             <html xmlns="http://www.w3.org/1999/xhtml">
             <a href="https://www.strava.com/athletes/${id}" style="text-decoration: none; color: unset;" target="_blank">
                 <div style="width: 100%; height: 100%; display: flex; flex-direction:column; justify-content: center; align-items:start;">

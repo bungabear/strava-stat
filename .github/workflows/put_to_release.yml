@@ -1,0 +1,35 @@
+name: docker dev release
+on:
+  schedule: 
+    - cron: '0 9,21 * * *'
+  push:
+    branches:
+    - main
+
+jobs:
+  build:
+    name: put to release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      
+      - run: npm run download
+        env:
+          - STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
+          - STRAVA_CLIENT_SECRET: ${{ secrets.STRAVA_CLIENT_SECRET }}
+          - STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1.12.0
+        with:
+          artifacts: "my-stats.svg"
+          artifactContentType: image/svg+xml
+          makeLatest: true
+          allowUpdates: true
+          tag: my-stats
+          name: Release my-stats

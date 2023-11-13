@@ -80,7 +80,7 @@ function createInfoSvg({id, data}) {
                 }
             }
         </style>
-        <foreignObject style="width: 100%; height: 100%;">
+        <foreignObject style="width: 100%; overflow:visible;">
             <html xmlns="http://www.w3.org/1999/xhtml">
             <a href="https://www.strava.com/athletes/${id}" style="text-decoration: none; color: unset;" target="_blank">
                 <div style="width: 100%; height: 100%; display: flex; flex-direction:column; justify-content: center; align-items:start;">

@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "node src/test.js" ,
+    "download": "node script/prod.js",
     "build": "webpack --mode production"
   },
   "repository": {
